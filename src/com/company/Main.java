@@ -27,9 +27,12 @@ public class Main {
         students.stream()
                 .forEach(System.out::println);
 
-        double sum = students.stream().map(x -> x.getAssessments())
+        double sum1 = students.stream().map(x -> x.getAssessments())
                 .flatMapToInt(Arrays::stream)
-                .reduce(0, (x, y) -> x + y)/25.0;
+                .reduce(0, (x, y) -> x + y);
+        double countStudent = students.stream().map(x -> x.getAssessments())
+                .flatMapToInt(Arrays::stream).count();
+        double sum = sum1 / countStudent;
         System.out.println("Средний бал по всем студентам = " + sum);
 
     }
